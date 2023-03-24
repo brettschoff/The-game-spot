@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+    <h1>Games Tab</h1>
+    <% games.forEach(g => { %>
+        <div>
+            <div>
+                <a href="/games/<%= g._id %>"><%= g.name %></a>
+            </div>
+        </div>
+    <% }) %>
+</body>
+</html>

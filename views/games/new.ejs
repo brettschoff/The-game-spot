@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+    <h1>Add a game</h1>
+    <form action="/games" method="POST">
+        <label> Game Title</label>
+        <input type="text" name="name" placeholder="Required" required>
+        <label>Description</label>
+        <input type="text" name="description" placeholder="Required" required>
+        <label>URL to photo of game:</label>
+        <input type="text" name="photo">
+        <label>Publisher</label>
+        <input type="text" name="Developer">
+        <label>ESRB Rating</label>
+        <select name="esrbRating">
+            <option value="E">E</option>
+            <option value="E10+">E10+</option>
+            <option value="T">T</option>
+            <option value="M">M</option>
+            <option value="AO">AO</option>
+            <option value="RP">RP</option>
+            <option value="RP17+">RP17+</option>
+        </select>
+        <input type="submit" value="Add Game">
+    </form>
+</body>
+</html>

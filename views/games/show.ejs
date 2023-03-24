@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+    <h1>Show Page</h1>
+    <div>
+        <img src="<%= game.photo %>">
+        <div>Title: <%= game.name %></div>
+        <div>Description: <%= game.description %></div>
+        <div>Developer: <%= game.developer %></div>
+        <div>ESRB: <%= game.esrbRating %></div>
+    </div>
+
+    <div>
+        <% if (game.review.length) { %>
+                <% game.review.forEach(r => { %>
+                    <%= r.text %>
+                    <span><%= r.rating %>/5 Hype Points</span>
+                    <div id="review-user">
+                        <%= r.date.toLocaleString() %>
+                        <%= r.userName %>
+                    </div> 
+                    <% if (user && user._id.equals(r.userId)) { %>
+                        <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                          <button type="submit">Delete</button>
+                        </form>
+                      <% } %>
+                <% }) %>
+        <% } else { %>
+            <h4>No Reviews yet</h4>
+        <% } %>
+    </div>
+
+    <% if (user) { %>
+        <div>
+            <h3>Leave a review!</h3>
+            <form action="/games/<%= game._id %>/reviews" method="POST">
+                <textarea name="text" rows="3"></textarea>
+                <label>Rating:</label>
+                <select name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <input type="submit" value="Leave Review">
+            </form>
+        </div>
+    <% } else {%>
+        <p>Login to leave a review</p>
+        <% } %>
+</body>
+</html>
