@@ -16,11 +16,15 @@
                     <div id="review-user">
                         <%= r.date.toLocaleString() %>
                         <%= r.userName %>
+                        <% if (r.edited) { %>
+                            <span><i>Edited</i></span>
+                        <% } %>
                     </div> 
                     <% if (user && user._id.equals(r.userId)) { %>
                         <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
                           <button type="submit">Delete</button>
                         </form>
+                        <a href="/reviews/<%= r._id %>/edit"> Edit Post</a>
                       <% } %>
                 <% }) %>
         <% } else { %>

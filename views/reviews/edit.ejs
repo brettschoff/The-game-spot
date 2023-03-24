@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+<h1>Edit page</h1>
+<div>
+    <form action="/reviews/<%= review._id %>?_method=PUT" method="POST">
+        <textarea name="text" rows="3"> <%= review.text %></textarea>
+        <label>Rating:</label>
+        <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <input type="submit" value="Leave Review">
+    </form>
+</div>

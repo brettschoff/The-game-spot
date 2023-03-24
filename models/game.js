@@ -7,7 +7,11 @@ const reviewSchema = new mongoose.Schema(
         userPhoto: String,
         userName: String,
         date: Date,
-        rating: String
+        rating: String,
+        edited: {
+            type: Boolean,
+            default: false
+        }
     }
 )
 
