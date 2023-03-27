@@ -7,14 +7,6 @@ module.exports = {
     edit
 }
 
-const findOne = async () => {
-    
-}
-
-
-
-
-
 async function create(req,res) {
     try{
         const oneGame = await Game.findById(req.params.id);

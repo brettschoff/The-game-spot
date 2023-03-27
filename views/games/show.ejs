@@ -1,14 +1,29 @@
 <%- include('../partials/header') %>
+<div class="show">
     <h1>Show Page</h1>
-    <div>
-        <img src="<%= game.photo %>">
+    <div id="game-desc">
         <div>Title: <%= game.name %></div>
         <div>Description: <%= game.description %></div>
         <div>Developer: <%= game.developer %></div>
         <div>ESRB: <%= game.esrbRating %></div>
     </div>
+    <div class="screenshot">
+        <img src="<%= game.photo %>" alt="No Screenshot Available" id="game-screenshot">
+    </div>  
+    <div class="buy-tab">
+        <h3>Buy here!</h3>
+        <% if (game.steam) { %>
+            <a href="<%= game.steam %>"><img src="https://i.imgur.com/lxkEyW3.png" id="steam"></a>
+        <% } %>
+        <% if (game.playstation) { %>
+            <a href="<%= game.playstation %>"><img src="https://i.imgur.com/hnUSDIC.png" id="playstation"></a>
+        <% } %>
+        <% if (game.xbox) { %>
+            <a href="<%= game.xbox %>"><img src="https://i.imgur.com/gd8j4p6.png" id="xbox"></a>
+        <% } %>
+    </div>
 
-    <div>
+    <div class="review">
         <% if (game.review.length) { %>
                 <% game.review.forEach(r => { %>
                     <%= r.text %>
@@ -33,7 +48,7 @@
     </div>
 
     <% if (user) { %>
-        <div>
+        <div class="leave-review">
             <h3>Leave a review!</h3>
             <form action="/games/<%= game._id %>/reviews" method="POST">
                 <textarea name="text" rows="3"></textarea>
@@ -51,5 +66,6 @@
     <% } else {%>
         <p>Login to leave a review</p>
         <% } %>
+</div>
 </body>
 </html>

@@ -1,25 +1,89 @@
 <%- include('../partials/header') %>
     <h1>Add a game</h1>
+    <div class="new-form">
     <form action="/games" method="POST">
-        <label> Game Title</label>
-        <input type="text" name="name" placeholder="Required" required>
-        <label>Description</label>
-        <input type="text" name="description" placeholder="Required" required>
-        <label>URL to photo of game:</label>
-        <input type="text" name="photo">
-        <label>Publisher</label>
-        <input type="text" name="Developer">
-        <label>ESRB Rating</label>
-        <select name="esrbRating">
-            <option value="E">E</option>
-            <option value="E10+">E10+</option>
-            <option value="T">T</option>
-            <option value="M">M</option>
-            <option value="AO">AO</option>
-            <option value="RP">RP</option>
-            <option value="RP17+">RP17+</option>
-        </select>
-        <input type="submit" value="Add Game">
+        <div class="row g- align-items-center">
+            <div class="col-auto">
+                <label> Game Title</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" name="name" placeholder="Required" required>
+            </div>
+        </div>
+        <div class="row g- align-items-center">
+            <div class="col-auto">
+                <label>Description</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" name="description" placeholder="Required" required>
+            </div>
+        </div>
+        <div class="row g- align-items-center">
+            <div class="col-auto">
+                <label>URL to photo of game:</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" name="photo">
+            </div>
+        </div>
+        <div class="row g- align-items-center">
+            <div class="col-auto">
+                <label>Publisher</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" name="Developer">
+            </div>
+        </div>
+        <div class="row g- align-items-center">
+            <div class="col-auto">
+                <label>ESRB Rating</label>
+            </div> 
+            <div class="col-auto">
+                <select name="esrbRating">
+                    <option value="E">E</option>
+                    <option value="E10+">E10+</option>
+                    <option value="T">T</option>
+                    <option value="M">M</option>
+                    <option value="AO">AO</option>
+                    <option value="RP">RP</option>
+                    <option value="RP17+">RP17+</option>
+                </select>
+            </div>
+        </div>
+        <div class="row g- align-items-center">
+            <div class="col-auto">
+                <label class="col-form-label">Steam Store Page</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" name="steam" class="form-control">
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label>Playstation Store Page</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" columns="2" name="playstation" class="form-control">
+            </div>
+        </div>
+        <div class="row g-5 align-items-center">
+            <div class="col-auto">
+                <label>Xbox Store Page</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" columns="2" name="xbox" class="form-control">
+            </div>
+        </div>
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <label>Upcoming?</label>
+            </div>
+            <div class="col-auto">
+                <input type="checkbox" name="upcoming">
+            </div>
+        </div>
+            <input type="submit" value="Add Game">
     </form>
+    </div>
 </body>
 </html>

@@ -40,6 +40,7 @@ async function show(req, res) {
 }
 async function create(req, res) {
     try{
+        req.body.upcoming = !!req.body.upcoming
         const newGame = await Game.create(req.body)
         res.redirect(`/games/${newGame._id}`)
     } catch(err) {

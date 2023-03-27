@@ -28,7 +28,11 @@ const gameSchema = new mongoose.Schema(
         photo: String,
         developer: String,
         esrbRating: String,
-        review: [reviewSchema]
+        review: [reviewSchema],
+        upcoming: {type: Boolean, default: false},
+        steam: String,
+        playstation: String,
+        xbox: String
     },
     {
         timestamps: true
