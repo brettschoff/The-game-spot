@@ -1,14 +1,13 @@
 <%- include('./partials/header') %>
-    <h1>Landing Page</h1>
+    <h1 class="title">Check out upcoming games</h1>
+    <div class="games-container">
     <% upcoming.forEach(g => { %>
-        <div class="upcoming-index">
-            <img src="<%= g.photo %>" alt="No photo available">
-                <div id="upcoming-title">
-                    <a href="/games/<%= g._id %>" id='upcoming-title'><p><%= g.name %></p></a>
-                </div>
+        <div class="upcoming-index" style="background-image: url('<%= g.photo %>');"class="upcoming-screenshot">
+            <a href="/games/<%= g._id %>" id='upcoming-title'><p><%= g.name %></p></a>
                 </a>
         </div>
         
     <% }) %>
+    </div>
 </body>
 </html>

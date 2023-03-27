@@ -1,8 +1,7 @@
 <%- include('../partials/header') %>
 <div class="show">
-    <h1>Show Page</h1>
-    <div id="game-desc">
-        <div>Title: <%= game.name %></div>
+    <h1><%= game.name %></h1>
+    <div class="text-center"id="game-desc">
         <div>Description: <%= game.description %></div>
         <div>Developer: <%= game.developer %></div>
         <div>ESRB: <%= game.esrbRating %></div>
@@ -14,13 +13,16 @@
         <h3>Buy here!</h3>
         <% if (game.steam) { %>
             <a href="<%= game.steam %>"><img src="https://i.imgur.com/lxkEyW3.png" id="steam"></a>
-        <% } %>
+        <% } %> 
         <% if (game.playstation) { %>
             <a href="<%= game.playstation %>"><img src="https://i.imgur.com/hnUSDIC.png" id="playstation"></a>
-        <% } %>
-        <% if (game.xbox) { %>
+        <% } %> 
+        <%if (game.xbox) { %>
             <a href="<%= game.xbox %>"><img src="https://i.imgur.com/gd8j4p6.png" id="xbox"></a>
         <% } %>
+        <% if (!game.steam && !game.playstion && !game.xbox) { %>
+            <p> This game is not available for purchase. Check back later.</p>
+            <% } %>
     </div>
 
     <div class="review">
@@ -39,19 +41,20 @@
                         <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
                           <button type="submit">Delete</button>
                         </form>
-                        <a href="/reviews/<%= r._id %>/edit"> Edit Post</a>
+                        <a href="/reviews/<%= r._id %>/edit" id=""> Edit Post</a>
+                        <br>
                       <% } %>
                 <% }) %>
         <% } else { %>
             <h4>No Reviews yet</h4>
         <% } %>
-    </div>
-
+            <br><br><br>
     <% if (user) { %>
         <div class="leave-review">
             <h3>Leave a review!</h3>
             <form action="/games/<%= game._id %>/reviews" method="POST">
                 <textarea name="text" rows="3"></textarea>
+                <br>
                 <label>Rating:</label>
                 <select name="rating">
                     <option value="1">1</option>
@@ -66,6 +69,7 @@
     <% } else {%>
         <p>Login to leave a review</p>
         <% } %>
+    </div>
 </div>
 </body>
 </html>
