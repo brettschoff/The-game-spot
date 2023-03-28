@@ -1,11 +1,13 @@
 <%- include('../partials/header') %>
-    <h1>Games Tab</h1>
-    <% games.forEach(g => { %>
-        <div>
-            <div>
-                <a href="/games/<%= g._id %>"><%= g.name %></a>
+<div class="browse">
+    <h1>Browse Games</h1>
+    <div class='games-flex'>
+        <% games.forEach(g => { %>
+            <div class="games-list">
+                <a href="/games/<%= g._id %>" class="game-links"><%= g.name %></a>
             </div>
-        </div>
-    <% }) %>
+        <% }) %>
+    </div>
+</div>
 </body>
 </html>

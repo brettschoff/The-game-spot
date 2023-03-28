@@ -2,74 +2,89 @@
 <div class="show">
     <h1><%= game.name %></h1>
     <div class="text-center"id="game-desc">
-        <div>Description: <%= game.description %></div>
-        <div>Developer: <%= game.developer %></div>
-        <div>ESRB: <%= game.esrbRating %></div>
+        <div><%= game.description %></div>
+        <div>Developed By: <%= game.developer %></div>
+        <div>Rated: <%= game.esrbRating %></div>
     </div>
     <div class="screenshot">
         <img src="<%= game.photo %>" alt="No Screenshot Available" id="game-screenshot">
     </div>  
-    <div class="buy-tab">
-        <h3>Buy here!</h3>
-        <% if (game.steam) { %>
-            <a href="<%= game.steam %>"><img src="https://i.imgur.com/lxkEyW3.png" id="steam"></a>
-        <% } %> 
-        <% if (game.playstation) { %>
-            <a href="<%= game.playstation %>"><img src="https://i.imgur.com/hnUSDIC.png" id="playstation"></a>
-        <% } %> 
-        <%if (game.xbox) { %>
-            <a href="<%= game.xbox %>"><img src="https://i.imgur.com/gd8j4p6.png" id="xbox"></a>
-        <% } %>
-        <% if (!game.steam && !game.playstion && !game.xbox) { %>
-            <p> This game is not available for purchase. Check back later.</p>
+    <div class="bottom-tabs">
+        <div class="buy-tab">
+            <h3>Buy here!</h3>
+            <% if (game.steam) { %>
+                <a href="<%= game.steam %>"><img src="https://i.imgur.com/lxkEyW3.png" id="steam"></a>
+            <% } %> 
+            <% if (game.playstation) { %>
+                <a href="<%= game.playstation %>"><img src="https://i.imgur.com/hnUSDIC.png" id="playstation"></a>
+            <% } %> 
+            <%if (game.xbox) { %>
+                <a href="<%= game.xbox %>"><img src="https://i.imgur.com/gd8j4p6.png" id="xbox"></a>
             <% } %>
-    </div>
+            <% if (!game.steam && !game.playstion && !game.xbox) { %>
+                <p> This game is not available for purchase. Check back later.</p>
+                <% } %>
+        </div>
 
-    <div class="review">
-        <% if (game.review.length) { %>
-                <% game.review.forEach(r => { %>
-                    <%= r.text %>
-                    <span><%= r.rating %>/5 Hype Points</span>
-                    <div id="review-user">
-                        <%= r.date.toLocaleString() %>
-                        <%= r.userName %>
-                        <% if (r.edited) { %>
-                            <span><i>Edited</i></span>
+        <div class="review">
+            <% if (game.review.length) { %>
+                    <% game.review.forEach(r => { %>
+                        <%= r.text %>
+                        <span><%= r.rating %>/5 Hype Points</span>
+                        <div id="review-user">
+                            <%= r.userName %>
+                            <span>on</span>
+                            <%= r.date.toLocaleString() %>
+                            <% if (r.edited) { %>
+                                <span><i>Edited</i></span>
+                            <% } %>
+                        </div>
+                        <div class="buttons-review">
+                        <% if (user && user._id.equals(r.userId)) { %>
+                            <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                            <a href="/reviews/<%= r._id %>/edit" id="edit-tag"> Edit Post</a>
+                            <br>
                         <% } %>
-                    </div> 
-                    <% if (user && user._id.equals(r.userId)) { %>
-                        <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                          <button type="submit">Delete</button>
-                        </form>
-                        <a href="/reviews/<%= r._id %>/edit" id=""> Edit Post</a>
-                        <br>
-                      <% } %>
-                <% }) %>
-        <% } else { %>
-            <h4>No Reviews yet</h4>
-        <% } %>
-            <br><br><br>
+                        </div>
+                    <% }) %>
+            <% } else { %>
+                <h4>No Reviews yet</h4>
+            <% } %>
+                <br><br><br>
+        <% if (user) { %>
+            <div class="leave-review">
+                <h3>Leave a review!</h3>
+                <form action="/games/<%= game._id %>/reviews" method="POST">
+                    <textarea name="text" rows="3"></textarea>
+                    <br>
+                    <label>Rating:</label>
+                    <select name="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <input type="submit" value="Leave Review">
+                </form>
+            </div>
+        <% } else {%>
+            <p>Login to leave a review</p>
+            <% } %>
+        </div>
+    </div>
     <% if (user) { %>
-        <div class="leave-review">
-            <h3>Leave a review!</h3>
-            <form action="/games/<%= game._id %>/reviews" method="POST">
-                <textarea name="text" rows="3"></textarea>
-                <br>
-                <label>Rating:</label>
-                <select name="rating">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <input type="submit" value="Leave Review">
+        <div class="buttons">
+            <form action="/games/<%= game._id %>/edit" method="GET">
+                <button>Edit Game</button>
+            </form>
+            <form action="/games/<%= game._id %>?_method=DELETE" method="POST">
+                <button class="delete">Delete Game</button>
             </form>
         </div>
-    <% } else {%>
-        <p>Login to leave a review</p>
-        <% } %>
-    </div>
+    <% } %>
 </div>
 </body>
 </html>

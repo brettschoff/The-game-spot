@@ -1,14 +1,14 @@
 <%- include('../partials/header') %>
-    <h1 class="title">Add a game</h1>
+<h1 class="title">Edit <%= game.name %></h1>
     <div class="new-form">
-    <form action="/games" method="POST">
+    <form action="/games/<%= game._id %>?_method=PUT" method="POST">
         <div class="input-wrapper">
         <div class="row g- align-items-center">
             <div class="col-auto">
                 <label> Game Title</label>
             </div>
             <div class="col-auto">
-                <input type="text" name="name" placeholder="Required" class="form-control" required>
+                <input type="text" name="name" placeholder="Required" value="<%= game.name %>" class="form-control" required>
             </div>
         </div>
         <div class="row g- align-items-center">
@@ -16,7 +16,7 @@
                 <label>Description</label>
             </div>
             <div class="col">
-                <input type="text" name="description" placeholder="Required" class="form-control"required>
+                <input type="text" name="description" placeholder="Required"value="<%= game.description %>" class="form-control" required>
             </div>
         </div>
         <div class="row g- align-items-center">
@@ -24,7 +24,7 @@
                 <label>URL to photo of game:</label>
             </div>
             <div class="col">
-                <input type="text" name="photo" columns="2" class="form-control">
+                <input type="text" name="photo" value="<%= game.photo %>" class="form-control">
             </div>
         </div>
         <div class="row g- align-items-center">
@@ -32,7 +32,7 @@
                 <label>Developer</label>
             </div>
             <div class="col-auto">
-                <input type="text" name="developer">
+                <input type="text" name="developer" value="<%= game.developer %>">
             </div>
         </div>
         <div class="row g- align-items-center">
@@ -40,7 +40,7 @@
                 <label>ESRB Rating</label>
             </div> 
             <div class="col-auto">
-                <select name="esrbRating">
+                <select name="esrbRating" >
                     <option value="E">E</option>
                     <option value="E10+">E10+</option>
                     <option value="T">T</option>
@@ -56,7 +56,7 @@
                 <label class="col-form-label">Steam Store Page</label>
             </div>
             <div class="col">
-                <input type="text" name="steam" columns="2" class="form-control">
+                <input type="text" name="steam" class="form-control" value="<%= game.steam %>">
             </div>
         </div>
         <div class="row g- align-items-center">
@@ -64,7 +64,7 @@
                 <label>Playstation Store Page</label>
             </div>
             <div class="col">
-                <input type="text" columns="2" name="playstation" class="form-control">
+                <input type="text" columns="2" name="playstation" class="form-control" value="<%= game.playstation %>">
             </div>
         </div>
         <div class="row g- align-items-center">
@@ -72,19 +72,25 @@
                 <label>Xbox Store Page</label>
             </div>
             <div class="col">
-                <input type="text" columns="2" name="xbox" class="form-control">
+                <input type="text" columns="2" name="xbox" class="form-control" value="<%= game.xbox %>">
             </div>
         </div>
         <div class="row g- align-items-center">
             <div class="col-auto">
                 <label>Upcoming?</label>
             </div>
-            <div class="col-auto">
-                <input type="checkbox" name="upcoming">
-            </div>
+            <% if (!!game.upcoming) { %>
+                <div class="col-auto">
+                    <input type="checkbox" name="upcoming" checked>
+                </div>
+            <% } else {%>
+                <div class="col-auto">
+                    <input type="checkbox" name="upcoming">
+                </div>
+            <% } %>
         </div>
     </div>
-            <input type="submit" value="Add Game">
+            <input type="submit" value="Edit Game">
     </form>
     </div>
 </body>
