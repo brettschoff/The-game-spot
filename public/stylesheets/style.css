@@ -198,6 +198,7 @@ body > .show {
 .games-flex {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 20px;
   padding: 10px 0 0 10px;
 }
