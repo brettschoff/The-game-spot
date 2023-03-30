@@ -1,35 +1,47 @@
-# passport-boilerplate
+# The Game Spot!
 
+## Description
 
-This is your passport boilerplate.
+Welcome to The Game Spot, a review board for video games. This application was built with node, express, and mongoDB. It was deployed through cyclic.
 
-## Setup 
+## Visit the application
 
-1. Clone the repo
-2. Rename the folder to your Project
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+<a href='https://ultramarine-wasp-kilt.cyclic.app/'>Click here</a>
 
+## How to use this site
 
-#### Setup your git repo
-0. Setup your `.env` file and add all the things you need! (look at mongoose movies for reference!)
-1. in the project root `git init`
-2. `git add .` to add all the starter code
-3. `git commit -m "setup boilerplate"` 
-4. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-5. copy the remote address
-6. In your terminal add the remote `git remote add origin yourGithubRepo'sAddressGoesHere`
-7. `git pull origin main` If a screen pulls up asking you to do something just press `:q` and then `enter` (thats vim btw :) )
-8. `git push origin main`
+When you first load up the page you will see the landing page that has all upcoming games that haven't been release yet.
 
-#### Setup your login (THE APP WON'T WORK until you do, no VIEWS are setup, or the landing route)
+<br>
 
-0. Setup your database connection string
-1. Then Setup Your User Model, 
-2. Follow the steps from the lesson plan to get your Google login credentials for your `.env` file (create the file if you haven't), or you can just copy the ones from earlier if you want to reuse them.
-3. Setup the Code in your config passport 
-4. Setup your callback routes in your `routes/index`
-5. Setup a view and test your login!
+<img src='https://i.imgur.com/mDco8mW.png'>
 
-#### Make a commit 
+<br>
 
-```git commit -m "setup up oauth and User Model"```
+You can click the browse game tab to pull up all games that are in the system.
+
+<br>
+
+<img src='https://i.imgur.com/sgRvxGI.png'>
+
+<br>
+
+You can also login through google to be able to add any games you may not see on the site.
+
+<br>
+
+<img src='https://i.imgur.com/Dhg6oDN.png'>
+
+<br>
+
+When on a game page you will see the cover for the game and the information about the game. Also listed is any reviews that have been added for the game, if you are logged in you will be able to leave a review. on the bottom right of the page will be where you may go and purchase the game if it is something that catches your eye.
+
+<br>
+
+<img src='https://i.imgur.com/xnGYRl9.png'>
+
+<br>
+
+## Icebox
+
+Visit my <a href='https://trello.com/b/pvMDWyVb/untitled-board'>trello board</a> for all of my iceboxed items.
