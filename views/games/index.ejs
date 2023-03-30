@@ -4,7 +4,7 @@
     <div class='games-flex'>
         <% games.forEach(g => { %>
             <div class="games-list">
-                <a href="/games/<%= g._id %>" class="game-links"><%= g.name %></a>
+                <a href="/games/<%= g.id %>" class="game-links"><%= g.name %></a>
             </div>
         <% }) %>
     </div>

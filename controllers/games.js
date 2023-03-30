@@ -1,4 +1,5 @@
 const Game = require('../models/game')
+const axios = require('axios')
 
 
 module.exports = {
@@ -13,10 +14,33 @@ module.exports = {
 
 async function index(req, res) {
     try{
-        const allGames = await Game.find({}).sort('name')
-        res.render('games/index', {
-            games: allGames
+        const response = await axios.post('https://id.twitch.tv/oauth2/token', {
+            client_id: process.env.TWITCH_CLIENT_ID,
+            client_secret: process.env.TWITCH_SECRET,
+            grant_type: "client_credentials"
         })
+        const allGames = await axios.post('https://api.igdb.com/v4/games', {}, {
+            body: {
+                fields: 'name',
+                limit: 10
+            },
+            headers: {
+                'Client-ID': process.env.TWITCH_CLIENT_ID,
+                Authorization: 'Bearer ' + response.data.access_token
+            }
+        })
+        
+        console.log(allGames, '<---- Should be names of games')
+        console.log(typeof(allGames.data))
+//         const allGames = await Game.find({}).sort('name')
+//         res.render('games/index', {
+//             games: allGames
+//         })
+    res.render('games/index', {
+        games: allGames.data
+        }
+    )
+
     } catch(err) {
         console.log(err)
         res.send(err)
