@@ -8,7 +8,8 @@ router.get('/', indexCtrl.show)
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
   'google',
-  { scope: ['profile', 'email'] }
+  { scope: ['profile', 'email'],
+    prompt: select_account }
 ));
 
 // Google OAuth callback route
