@@ -45,3 +45,9 @@ When on a game page you will see the cover for the game and the information abou
 ## Icebox
 
 Visit my <a href='https://trello.com/b/pvMDWyVb/untitled-board'>trello board</a> for all of my iceboxed items.
+
+<ol>
+<li>API Support</li>
+<li>Add favorite feature to follow games and updates</li>
+<li>A search function</li>
+</ol>
