@@ -34,7 +34,7 @@ You can also login through google to be able to add any games you may not see on
 
 <br>
 
-When on a game page you will see the cover for the game and the information about the game. Also listed is any reviews that have been added for the game, if you are logged in you will be able to leave a review. on the bottom right of the page will be where you may go and purchase the game if it is something that catches your eye.
+When on a game page you will see the cover for the game and the information about the game. Also listed is any reviews that have been added for the game, if you are logged in you will be able to leave a review. On the bottom right of the page is a box where you will find store links to purchase the game if it is something that catches your eye.
 
 <br>
 
