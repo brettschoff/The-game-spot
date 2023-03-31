@@ -2,7 +2,7 @@
 
 ## Description
 
-Welcome to The Game Spot, a review board for video games. This application was built with node, express, and mongoDB. It was deployed through cyclic.
+Welcome to The Game Spot, a review board for video games where the users can view, create and update games. The user can also leave reviews on each game. This application was built with node, express, and mongoDB. It was deployed through cyclic.
 
 ## Visit the application
 
